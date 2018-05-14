@@ -1,5 +1,6 @@
 const button = document.querySelector("button.greeting")
-function changeText(ev){
-    ev.target.textContent = 'Clickity click';
+const heading = document.querySelector("h1.heading1")
+function changeText(){
+    heading.textContent='Button has been Clicked'; 
 }
 button.addEventListener("click", changeText)
