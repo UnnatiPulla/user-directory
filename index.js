@@ -25,7 +25,7 @@ const handleSubmit = function(ev){
     const userName = f.userName.value;
     users.textContent += " " + userName;
 
-
+    f.userName.value="";
 }
 
 form.addEventListener("submit", handleSubmit)
