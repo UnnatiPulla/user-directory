@@ -24,11 +24,14 @@ const handleSubmit = function(ev){
     const f = ev.target;
     const userName = f.userName.value;
     const age = f.age.value;
+
+    const favoritecolor = f.favoritecolor.value;
     
     const p = document.createElement('p');
     p.textContent = `${userName}, ${age}`;
+    p.style.backgroundColor = favoritecolor;
     users.appendChild(p);
-
+    
     f.reset();
     f.userName.focus();
 }
