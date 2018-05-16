@@ -6,12 +6,14 @@ const handleSubmit = function(ev){
     ev.preventDefault()
     const f = ev.target;  
     
-    
-        const userName = f.userName.value;
-        const age = f.age.value;
-        const favoritecolor = f.favoritecolor.value;
-    
-    users.appendChild(renderList(userName, age, favoritecolor));
+    const user = {
+         'Name' : f.userName.value,
+         'Age' : f.age.value,
+         'Favorite Color' : renderColor(f.favoritecolor.value),
+    }
+
+    const list = renderList(user);
+    users.appendChild(list);
 
     f.reset();
     f.userName.focus();
@@ -20,35 +22,36 @@ const handleSubmit = function(ev){
 function renderColor(favoritecolor){
     const colorDiv = document.createElement('div'); 
     colorDiv.style.backgroundColor = favoritecolor; 
-
     colorDiv.style.width = '6rem' 
     colorDiv.style.height = '3rem'
     return colorDiv;    
 }
 
-function renderListItem(){  
-    const nameItem = document.createElement('li'); 
-    const ageItem = document.createElement('li'); 
-    const colorItem = document.createElement('li');
-    nameItem.textContent = `Name: ${arguments[0]}`; 
-    ageItem.textContent = `Age: ${arguments[1]}`; 
-    colorItem.textContent = `Favorite Color: `;
-    colorItem.appendChild(renderColor(arguments[2]));  
+function renderListItem(label, value){  
+    const item = document.createElement('li'); 
+    const term = document.createElement('dt'); 
+    term.textContent = label;
+    const description = document.createElement('dd');
+    try{
+        description.appendChild(value);
+    }catch(e){
+        description.textContent+=value;
+    }
     
-    return [nameItem, ageItem, colorItem]; 
+    item.appendChild(term) 
+    item.appendChild(description)
+    return item;
                                                                             
 }
 
 
 
 function renderList(data){
-    const list = document.createElement('ul');
-    const items = renderListItem(arguments[0], arguments[1], arguments[2]);
-
-    list.appendChild(items[0]);  
-    list.appendChild(items[1]); 
-    list.appendChild(items[2]); 
-    
+    const list = document.createElement('dl');
+    Object.keys(data).forEach(label => {
+        const item = renderListItem(label, data[label])
+        list.appendChilf(item);
+    })
     return list;
 }
 

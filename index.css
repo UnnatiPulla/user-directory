@@ -23,3 +23,8 @@ label{
 dl > li{
     list-style: none;
 }
+
+dl:nth-of-type(even){
+    background-color: #3e3e3e
+}
+
