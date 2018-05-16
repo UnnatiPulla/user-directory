@@ -10,19 +10,11 @@ const handleSubmit = function(ev){
     const favoritecolor = f.favoritecolor.value;
     
     const list = document.createElement('ul');
-
-    const nameItem = document.createElement('li');
-    nameItem.textContent = `Name: ${userName}`
-    list.appendChild(nameItem);
-
-    const ageItem = document.createElement('li');
-    ageItem.textContent = `Age: ${age}`
-    list.appendChild(ageItem);
-
-    const colorItem = document.createElement('li');
-    colorItem.textContent = `Favorite Color: `;
-    colorItem.appendChild(renderColor(favoritecolor));
-    list.appendChild(colorItem);
+    const items = renderListItem(userName, age, favoritecolor);
+    
+    list.appendChild(items[0]);
+    list.appendChild(items[1]);
+    list.appendChild(items[2]);
     
     const users = document.querySelector("#users");
     users.appendChild(list);
@@ -39,14 +31,18 @@ function renderColor(favoritecolor){
     return colorDiv;
 }
 
-//function renderListItem(){
-  //  const nameItem = document.createElement('li');
-    //const ageItem = document.createElement('li');
-    //const colorItem = document.createElement('li');
-    //nameItem.textContent = `Name: ${arguments[0]}`
-    //ageItem.textContent = `Age: ${arguments[1]}`
+function renderListItem(){
+    const nameItem = document.createElement('li');
+    const ageItem = document.createElement('li');
+    const colorItem = document.createElement('li');
+    nameItem.textContent = `Name: ${arguments[0]}`
+    ageItem.textContent = `Age: ${arguments[1]}`
+    colorItem.textContent = `Favorite Color: `;
+    colorItem.appendChild(renderColor(arguments[2]));
 
-//}
+    return [nameItem, ageItem, colorItem];
+
+}
 
 
 form.addEventListener("submit", handleSubmit)
