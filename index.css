@@ -9,3 +9,17 @@ main {
     justify-content: space-around;
 
 }
+
+#userForm {
+    background-color: #eeeeee;
+    padding : 1 rem;
+    border: 10px solid #e3e3e3;  
+    
+}
+label{
+    display: block;
+}
+
+dl > li{
+    list-style: none;
+}
