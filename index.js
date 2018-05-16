@@ -9,15 +9,7 @@ const handleSubmit = function(ev){
     const age = f.age.value;
     const favoritecolor = f.favoritecolor.value;
     
-    const list = document.createElement('ul');
-    const items = renderListItem(userName, age, favoritecolor);
-    
-    list.appendChild(items[0]);
-    list.appendChild(items[1]);
-    list.appendChild(items[2]);
-    
-    const users = document.querySelector("#users");
-    users.appendChild(list);
+    users.appendChild(renderList(userName, age, favoritecolor));
 
     f.reset();
     f.userName.focus();
@@ -42,6 +34,18 @@ function renderListItem(){
 
     return [nameItem, ageItem, colorItem];
 
+}
+
+function renderList(){
+    const list = document.createElement('ul');
+    const items = renderListItem(arguments[0], arguments[1], arguments[2]);
+    
+    list.appendChild(items[0]);
+    list.appendChild(items[1]);
+    list.appendChild(items[2]);
+    
+    const users = document.querySelector("#users");
+    return list;
 }
 
 
