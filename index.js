@@ -1,6 +1,6 @@
 
 const form = document.querySelector("#userForm");
-const users = document.querySelector("#users");  
+
 
 const handleSubmit = function(ev){
     ev.preventDefault()
@@ -11,7 +11,7 @@ const handleSubmit = function(ev){
          'Age' : f.age.value,
          'Favorite Color' : renderColor(f.favoritecolor.value),
     }
-
+    const users = document.querySelector("#users");  
     const list = renderList(user);
     users.appendChild(list);
 
@@ -44,13 +44,11 @@ function renderListItem(label, value){
                                                                             
 }
 
-
-
 function renderList(data){
     const list = document.createElement('dl');
     Object.keys(data).forEach(label => {
         const item = renderListItem(label, data[label])
-        list.appendChilf(item);
+        list.appendChild(item);
     })
     return list;
 }
